@@ -2,6 +2,8 @@ import React from 'react'
 import ReactDom from 'react-dom'
 
 import Header from './components/common/Header'
+import './index.css'
+
 
 const App = () => (
   <div>
