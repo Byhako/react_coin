@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
-import { handleResponse } from '../../helpers'
 import { API_URL } from '../../config'
+
+
+import { handleResponse } from '../../helpers'
 import Loading from '../common/Loading'
-import Table from './Table'
 import Pagination from './Pagination'
+import Table from './Table'
 
 
 class List extends Component {
