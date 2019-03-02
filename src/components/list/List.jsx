@@ -3,6 +3,8 @@ import { handleResponse } from '../../helpers'
 import { API_URL } from '../../config'
 import Loading from '../common/Loading'
 import Table from './Table'
+import Pagination from './Pagination'
+
 
 class List extends Component {
   constructor(props) {
@@ -11,16 +13,32 @@ class List extends Component {
     this.state = {
       loading: false,
       currencies: [],
-      error: null
+      error: null,
+      totalPages: 0,
+      page: 1
     }
   }
 
   componentDidMount () {
+    this.fetchCurrencies()
+  }
+
+  // componentDidUpdate (prevPros, prevState) {
+  //   if (prevState.page !== this.state.page) {
+  //     this.fetchCurrencies()
+  //   }
+  // }
+
+  fetchCurrencies = () => {
     this.setState({loading: true})
-    fetch(`${API_URL}/cryptocurrencies?page=1&perPage=20`)
+
+    const { page } = this.state
+
+    fetch(`${API_URL}/cryptocurrencies?page=${page}&perPage=20`)
       .then(handleResponse)
       .then((data) => {
-        this.setState({currencies: data.currencies, loading: false})
+        const { currencies, totalPages } = data
+        this.setState({currencies, totalPages, loading: false})
       })
       .catch((error) => {
         this.setState({error: error.errorMessage, loading: false})
@@ -37,8 +55,18 @@ class List extends Component {
     }
   }
 
+  handlePaginationClick = (direction) => {
+    let nextPage = this.state.page
+    nextPage = direction === 'next' ? nextPage+1 : nextPage-1
+    this.setState({page: nextPage}, () => {
+      // callback
+      this.fetchCurrencies()
+    })
+  }
+
+
   render () {
-    const { loading, error, currencies } = this.state
+    const { loading, error, currencies, page, totalPages } = this.state
 
     // render only loading component
     if (loading) {
@@ -51,10 +79,17 @@ class List extends Component {
     }
 
     return (
+      <div>
       <Table
         renderChangePercent={this.renderChangePercent}
         currencies={currencies}
       />
+      <Pagination 
+        page={page}
+        totalPages={totalPages}
+        handlePaginationClick={this.handlePaginationClick}
+      />
+      </div>
     )
   }
 }
