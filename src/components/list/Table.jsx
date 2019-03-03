@@ -1,11 +1,12 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
 import PropTypes from 'prop-types'
+import { renderChangePercent } from '../../helpers' 
 
 import './table.css'
 
 const Table = (props) => {
-  const { currencies, renderChangePercent, history } = props
+  const { currencies, history } = props
   return (
     <div className='table-container'>
       <table className="Table">
@@ -48,7 +49,6 @@ const Table = (props) => {
 
 Table.prototype = {
   currencies: PropTypes.array.isRequired,
-  renderChangePercent: PropTypes.func.isRequired,
   history: PropTypes.object.isRequired
 }
 
