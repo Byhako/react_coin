@@ -23,3 +23,6 @@ const App = () => (
 )
 
 ReactDom.render(<App />, document.getElementById('root'))
+
+
+// https://github.com/udilia/learn-react-by-building-a-web-app/tree/master/stages
