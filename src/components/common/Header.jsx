@@ -7,7 +7,7 @@ import './header.css'
 const Header = () => (
   <div className='header'>
     <Link to='/'>
-      <img src={logo} alt="logo" className='header-logo' />
+      <img src={logo} alt='logo' className='header-logo' />
     </Link>
 
     <Search />

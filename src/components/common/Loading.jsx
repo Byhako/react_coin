@@ -5,10 +5,7 @@ import './loading.css'
 
 const Loading = (props) => {
   const { width, height } = props
-  return <div 
-    className="Loading"
-    style={{width, height}}
-    />
+  return <div className='Loading' style={{ width, height }} />
 }
 
 Loading.defaultProps = {
@@ -21,4 +18,4 @@ Loading.propTypes = {
   height: PropTypes.string
 }
 
-export default  Loading
+export default Loading

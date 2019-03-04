@@ -8,7 +8,6 @@ import Detail from './components/detail/Detail'
 import NotFound from './components/notFound/NotFound'
 import './index.css'
 
-
 const App = () => (
   <BrowserRouter>
     <Fragment>
@@ -23,6 +22,3 @@ const App = () => (
 )
 
 ReactDom.render(<App />, document.getElementById('root'))
-
-
-// https://github.com/udilia/learn-react-by-building-a-web-app/tree/master/stages

@@ -72,7 +72,9 @@ class Detail extends React.Component {
           </div>
           <div className='Detail-item'>
             24H Change
-            <span className='Detail-value'>{renderChangePercent(currency.percentChange24h)}</span>
+            <span className='Detail-value'>
+              {renderChangePercent(currency.percentChange24h)}
+            </span>
           </div>
           <div className='Detail-item'>
             <span className='Detail-title'>Market cap</span>

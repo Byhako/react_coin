@@ -1,12 +1,10 @@
 import React, { Component } from 'react'
 import { API_URL } from '../../config'
 
-
 import { handleResponse } from '../../helpers'
 import Loading from '../common/Loading'
 import Pagination from './Pagination'
 import Table from './Table'
-
 
 class List extends Component {
   constructor(props) {
@@ -32,7 +30,7 @@ class List extends Component {
   // }
 
   fetchCurrencies = () => {
-    this.setState({loading: true})
+    this.setState({ loading: true })
 
     const { page } = this.state
 
@@ -63,20 +61,18 @@ class List extends Component {
 
     // render only loading component
     if (loading) {
-      return <div className="loading-container"><Loading /></div>
+      return <div className='loading-container'><Loading /></div>
     }
 
     // render only error message, if error occurred while fetching data
     if (error) {
-      return <div className="error">{error}</div>
+      return <div className='error'>{error}</div>
     }
 
     return (
       <div>
-      <Table
-        currencies={currencies}
-      />
-      <Pagination 
+      <Table currencies={currencies} />
+      <Pagination
         page={page}
         totalPages={totalPages}
         handlePaginationClick={this.handlePaginationClick}

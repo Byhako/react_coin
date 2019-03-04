@@ -6,7 +6,6 @@ import Loading from './Loading'
 
 import './search.css'
 
-
 class Search extends Component {
   constructor (props) {
     super(props)
@@ -55,9 +54,7 @@ class Search extends Component {
     this.setState({searchQuery})
 
     // evitamos consultas vacias
-    if (!searchQuery) {
-      return ''
-    }
+    if (!searchQuery) return ''
 
     this.setState({loading: true})
 
