@@ -2,6 +2,9 @@
 const express = require('express')
 const app = express()
 
+const compression = require('compression')
+app.use(compression())
+
 app.use(express.static('build'))
 
 app.get('*', (req, res) => {
